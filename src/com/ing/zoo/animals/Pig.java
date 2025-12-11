@@ -1,8 +1,12 @@
 package com.ing.zoo.animals;
 
+import com.ing.zoo.behavior.Carnivore;
+import com.ing.zoo.behavior.Herbivore;
+import com.ing.zoo.behavior.Trickable;
+
 import java.util.Random;
 
-public class Pig extends Animal {
+public class Pig extends Animal implements Carnivore, Herbivore, Trickable {
     public String name;
     public String helloText;
     public String eatText;
@@ -19,18 +23,21 @@ public class Pig extends Animal {
         System.out.println(helloText);
     }
 
+    @Override
     public void eatLeaves()
     {
         eatText = "munch munch oink";
         System.out.println(eatText);
     }
 
+    @Override
     public void eatMeat()
     {
         eatText = "nomnomnom oink thx";
         System.out.println(eatText);
     }
 
+    @Override
     public void performTrick()
     {
         Random random = new Random();
