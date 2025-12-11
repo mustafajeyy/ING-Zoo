@@ -1,7 +1,7 @@
 package com.ing.zoo.animals;
 
 public abstract class Animal {
-    String name;
+    private String name;
 
     public Animal(String name) {
         this.name = name;
@@ -9,5 +9,9 @@ public abstract class Animal {
 
     public void sayHello() {
         System.out.println(name + " zegt hallo!");
+    }
+
+    public String getName() {
+        return name;
     }
 }
