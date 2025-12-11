@@ -1,27 +1,24 @@
-package com.ing.zoo;
+package com.ing.zoo.animals;
 
-import java.util.Random;
-
-public class Zebra extends Animal {
+public class Lion extends Animal {
     public String name;
     public String helloText;
     public String eatText;
-    public String trick;
 
-    public Zebra()
+    public Lion()
     {
     }
 
     @Override
     public void sayHello()
     {
-        helloText = "zebra zebra";
+        helloText = "roooaoaaaaar";
         System.out.println(helloText);
     }
 
-    public void eatLeaves()
+    public void eatMeat()
     {
-        eatText = "munch munch zank yee bra";
+        eatText = "nomnomnom thx mate";
         System.out.println(eatText);
     }
 }

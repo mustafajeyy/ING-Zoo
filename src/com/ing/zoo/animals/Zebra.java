@@ -1,24 +1,25 @@
-package com.ing.zoo;
+package com.ing.zoo.animals;
 
-public class Lion extends Animal {
+public class Zebra extends Animal {
     public String name;
     public String helloText;
     public String eatText;
+    public String trick;
 
-    public Lion()
+    public Zebra()
     {
     }
 
     @Override
     public void sayHello()
     {
-        helloText = "roooaoaaaaar";
+        helloText = "zebra zebra";
         System.out.println(helloText);
     }
 
-    public void eatMeat()
+    public void eatLeaves()
     {
-        eatText = "nomnomnom thx mate";
+        eatText = "munch munch zank yee bra";
         System.out.println(eatText);
     }
 }
