@@ -2,7 +2,7 @@ package com.ing.zoo;
 
 import java.util.Random;
 
-public class Tiger {
+public class Tiger extends Animal {
     public String name;
     public String helloText;
     public String eatText;
@@ -12,6 +12,7 @@ public class Tiger {
     {
     }
 
+    @Override
     public void sayHello()
     {
         helloText = "rraaarww";
