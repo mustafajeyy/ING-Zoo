@@ -3,12 +3,12 @@ package com.ing.zoo.animals;
 import com.ing.zoo.behavior.Carnivore;
 
 public class Lion extends Animal implements Carnivore {
-    public String name;
     public String helloText;
     public String eatText;
 
-    public Lion()
+    public Lion(String name)
     {
+        super(name);
     }
 
     @Override

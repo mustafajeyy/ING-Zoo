@@ -6,13 +6,13 @@ import com.ing.zoo.behavior.Trickable;
 import java.util.Random;
 
 public class Tiger extends Animal implements Carnivore, Trickable {
-    public String name;
     public String helloText;
     public String eatText;
     public String trick;
 
-    public Tiger()
+    public Tiger(String name)
     {
+        super(name);
     }
 
     @Override

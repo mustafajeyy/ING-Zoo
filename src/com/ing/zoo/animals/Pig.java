@@ -7,13 +7,13 @@ import com.ing.zoo.behavior.Trickable;
 import java.util.Random;
 
 public class Pig extends Animal implements Carnivore, Herbivore, Trickable {
-    public String name;
     public String helloText;
     public String eatText;
     public String trick;
 
-    public Pig()
+    public Pig(String name)
     {
+        super(name);
     }
 
     @Override
