@@ -13,7 +13,7 @@ public class Zoo {
         commands.put("hello", new HelloCommand());
         commands.put("give meat", new GiveMeatCommand());
         commands.put("give leaves", new GiveLeavesCommand());
-        commands.put("perform tricks", new PerformTrickCommand());
+        commands.put("perform trick", new PerformTrickCommand());
 
         // Lijst met alle dieren
         List<Animal> animals = new ArrayList<>();
@@ -34,28 +34,40 @@ public class Zoo {
         animals.add(marty);
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Voer uw command in: ");
 
-        String input = scanner.nextLine();
-        String commandName = input;
-        String argument = null;
+        // Command loop
+        while (true) {
+            System.out.print("Voer uw command in: ");
+            String input = scanner.nextLine().trim();
 
-        // Split command and argument
-        for (String key : commands.keySet()) {
-            if (input.startsWith(key)) {
-                commandName = key;
-                argument = input.length() > key.length() ? input.substring(key.length()).trim() : null;
+            // Exit command
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Tot ziens!");
                 break;
+            }
+
+            String commandName = input;
+            String argument = null;
+
+            // Split command en argument
+            for (String key : commands.keySet()) {
+                if (input.startsWith(key)) {
+                    commandName = key;
+                    argument = input.length() > key.length() ? input.substring(key.length()).trim() : null;
+                    break;
+                }
+            }
+
+            Command command = commands.get(commandName);
+
+            if (command != null) {
+                command.execute(animals, argument);
+            }
+            else {
+                System.out.println("Unknown command: " + input);
             }
         }
 
-        Command command = commands.get(commandName);
-
-        if (command != null) {
-            command.execute(animals, argument);
-        }
-        else {
-            System.out.println("Unknown command: " + input);
-        }
+        scanner.close();
     }
 }
