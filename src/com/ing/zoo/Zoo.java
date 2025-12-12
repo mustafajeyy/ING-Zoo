@@ -1,22 +1,19 @@
 package com.ing.zoo;
 
 import com.ing.zoo.animals.*;
-import com.ing.zoo.behavior.Carnivore;
-import com.ing.zoo.behavior.Herbivore;
-import com.ing.zoo.behavior.Trickable;
+import com.ing.zoo.commands.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Zoo {
     public static void main(String[] args)
     {
-        String[] commands = new String[4];
-        commands[0] = "hello";
-        commands[1] = "give leaves";
-        commands[2] = "give meat";
-        commands[3] = "perform trick";
+        // Map met alle commands
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("hello", new HelloCommand());
+        commands.put("give meat", new GiveMeatCommand());
+        commands.put("give leaves", new GiveLeavesCommand());
+        commands.put("perform tricks", new PerformTrickCommand());
 
         // Lijst met alle dieren
         List<Animal> animals = new ArrayList<>();
@@ -40,52 +37,24 @@ public class Zoo {
         System.out.print("Voer uw command in: ");
 
         String input = scanner.nextLine();
-        String[] parts = input.split(" ", 2);
+        String commandName = input;
+        String argument = null;
 
-        if(parts[0].equals(commands[0]))
-        {
-            String name = parts.length > 1 ? parts[1] : null;
+        // Split command and argument
+        for (String key : commands.keySet()) {
+            if (input.startsWith(key)) {
+                commandName = key;
+                argument = input.length() > key.length() ? input.substring(key.length()).trim() : null;
+                break;
+            }
+        }
 
-            for(Animal animal : animals)
-            {
-                if (name == null || animal.getName().equals(name))
-                {
-                    animal.sayHello();
-                }
-            }
+        Command command = commands.get(commandName);
+
+        if (command != null) {
+            command.execute(animals, argument);
         }
-        else if(input.equals(commands[1]))
-        {
-            for(Animal animal : animals)
-            {
-                if(animal instanceof Herbivore)
-                {
-                    ((Herbivore) animal).eatLeaves();
-                }
-            }
-        }
-        else if(input.equals(commands[2]))
-        {
-            for(Animal animal : animals)
-            {
-                if(animal instanceof Carnivore)
-                {
-                    ((Carnivore) animal).eatMeat();
-                }
-            }
-        }
-        else if(input.equals(commands[3]))
-        {
-            for(Animal animal : animals)
-            {
-                if(animal instanceof Trickable)
-                {
-                    ((Trickable) animal).performTrick();
-                }
-            }
-        }
-        else
-        {
+        else {
             System.out.println("Unknown command: " + input);
         }
     }
