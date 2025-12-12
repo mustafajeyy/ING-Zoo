@@ -11,6 +11,7 @@ public class GiveMeatCommand implements Command {
     public void execute(List<Animal> animals, String argument) {
         for (Animal animal : animals) {
             if (animal instanceof Carnivore) {
+                System.out.print(animal.getName() + ": ");
                 ((Carnivore) animal).eatMeat();
             }
         }

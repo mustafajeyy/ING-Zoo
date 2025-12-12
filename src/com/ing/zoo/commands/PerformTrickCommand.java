@@ -11,6 +11,7 @@ public class PerformTrickCommand implements Command {
     public void execute(List<Animal> animals, String argument) {
         for (Animal animal : animals) {
             if (animal instanceof Trickable) {
+                System.out.print(animal.getName() + ": ");
                 ((Trickable) animal).performTrick();
             }
         }

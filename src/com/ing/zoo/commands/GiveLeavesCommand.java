@@ -11,6 +11,7 @@ public class GiveLeavesCommand implements Command {
     public void execute(List<Animal> animals, String argument) {
         for (Animal animal : animals) {
             if (animal instanceof Herbivore) {
+                System.out.print(animal.getName() + ": ");
                 ((Herbivore) animal).eatLeaves();
             }
         }
