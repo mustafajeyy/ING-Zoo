@@ -33,6 +33,12 @@ public class Zoo {
         Zebra marty = new Zebra("marty");
         animals.add(marty);
 
+        Monkey miguel = new Monkey("miguel");
+        animals.add(miguel);
+
+        Cat duudu = new Cat("duudu");
+        animals.add(duudu);
+
         Scanner scanner = new Scanner(System.in);
 
         // Command loop
